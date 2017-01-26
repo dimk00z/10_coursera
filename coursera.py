@@ -51,6 +51,6 @@ def output_courses_info_to_xlsx(courses_info,
 
 
 if __name__ == '__main__':
-    courses_list = get_courses_list_from_url(
-        'https://www.coursera.org/sitemap~www~courses.xml')
+    url = 'https://www.coursera.org/sitemap~www~courses.xml'
+    courses_list = get_courses_list_from_url(url)
     output_courses_info_to_xlsx(courses_list)
