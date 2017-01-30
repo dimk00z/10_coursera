@@ -1,15 +1,17 @@
 # Coursera Dump
 
-Скрипт считывает xml https://www.coursera.org/sitemap~www~courses.xml.
+Скрипт считывает xml <https://www.coursera.org/sitemap~www~courses.xml>.
 И парсит первые 20 курсов, данные о курсах сохраняет в output.xlsx
 
-Для работы необходимо установить модули из requirements.txt
-под администратором/рутом выполнить: pip install -r requirements.txt 
+Для работы необходимо установить модули из **requirements.txt**
+под администратором/рутом выполнить: **pip install -r requirements.txt** 
 
 Для запуска в консоли:
+```
+$ python .\coursera.py
+Данные сохранены в output.xlsx
 
-$ python coursera.py
-
+```
 
 # Project Goals
 
