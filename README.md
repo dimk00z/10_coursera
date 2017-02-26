@@ -12,7 +12,7 @@
 
 Пример запуска в консоли:
 ```
-$ python .coursera.py -o courseradump.xlsx
+$ python coursera.py -o courseradump.xlsx
 The data saved as courseradump.xlsx
 
 ```
