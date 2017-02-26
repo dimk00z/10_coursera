@@ -2,6 +2,7 @@ import requests
 from lxml import etree
 from bs4 import BeautifulSoup
 from openpyxl import Workbook
+import argparse
 
 
 COURSERA_URL = 'https://www.coursera.org/sitemap~www~courses.xml'
@@ -45,18 +46,25 @@ def get_courses_rows(courses_info):
     return courses_rows
 
 
-def output_courses_info_to_xlsx(courses_rows,
-                                filepath='output.xlsx'):
+def output_courses_info_to_xlsx(courses_rows, filepath):
     xlsx_book = Workbook()
     sheet = xlsx_book.active
     for row in courses_rows:
         sheet.append(row)
     xlsx_book.save(filepath)
-    return filepath
+
+
+def read_file_name_from_args():
+    args_parser = argparse.ArgumentParser(prog="Coursera Dump")
+    args_parser.add_argument(
+        '-o', '--output', help='output xlsx file name')
+    return args_parser.parse_args().output
 
 
 if __name__ == '__main__':
+    output_file_name = read_file_name_from_args() \
+        if read_file_name_from_args() else 'output.xlsx'
     courses_info = get_courses_info_from_url(COURSERA_URL)
     courses_rows = get_courses_rows(courses_info)
-    out_file_name = output_courses_info_to_xlsx(courses_rows)
-    print("Данные сохранены в {}".format(out_file_name))
+    output_courses_info_to_xlsx(courses_rows, output_file_name)
+    print("The data saved as {}".format(output_file_name))
